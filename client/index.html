@@ -26,78 +26,67 @@
         <div class="summary_warpper">
           <div class="summary_item">
             <span>총합</span>
-            <span>50,000,0000</span>
+            <span id="total-income">0</span>
           </div>
           <div class="summary_item">
             <span>수입</span>
-            <span>50,000,0000</span>
+            <span id="income-price">0</span>
           </div>
           <div class="summary_item">
             <span>지출</span>
-            <span>50,000,0000</span>
+            <span id="payment-price">0</span>
           </div>
         </div>
         <table>
-          <tr>
-            <th>날짜</th>
-            <th>자산</th>
-            <th>분류</th>
-            <th>내용</th>
-            <th>금액</th>
-          </tr>
-          <tr>
-            <td>24.07.12</td>
-            <td>카카오뱅크</td>
-            <td>식비</td>
-            <td>외식</td>
-            <td>50,000</td>
-          </tr>
-          <tr>
-            <td>24.07.13</td>
-            <td>카카오뱅크</td>
-            <td>월급</td>
-            <td>월급</td>
-            <td>50,000</td>
-          </tr>
+          <tbody id="income-tbody">
+            <tr>
+              <th>날짜</th>
+              <th>자산</th>
+              <th>분류</th>
+              <th>내용</th>
+              <th>금액</th>
+              <th>타입</th>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>
     <div class="grid__item content__form__wrapper">
-      <form action="" class="form__wrapper">
+      <form action="" id="user-form" class="form__wrapper">
         <div class="type__wrapper">
           <label for="method-1" class="type-label">
-            <input id="method-1" type="radio" name="action-type" value="income">
+            <input id="method-1" type="radio" name="action-type" value="수익">
             <span>수입</span>
           </label>
           <label for="method-2" class="type-label">
-            <input id="method-2" type="radio" name="action-type" value="expend">
+            <input id="method-2" type="radio" name="action-type" value="지출">
             <span>지출</span>
           </label>
         </div>
         <label for="" class="user-input">
           <span class="label-description">날짜</span>
-          <input type="date">
+          <input type="date" name="date">
         </label>
         <label for="" class="user-input">
           <span class="label-description">자산</span>
-          <input type="text">
+          <input type="text" name="asset-type">
         </label>
         <label for="" class="user-input">
           <span class="label-description">분류</span>
-          <input type="text">
+          <input type="text" name="classification">
         </label>
         <label for="" class="user-input">
           <span class="label-description">금액</span>
-          <input type="number">
+          <input type="number" name="price">
         </label>
         <label for="" class="user-input">
           <span class="label-description">내용</span>
-          <input type="text">
+          <input type="text" name="content">
         </label>
         <input type="submit" value="입력">
       </form>
     </div>
   </main>
+  <script defer src="./js/main.js" type="module"></script>
 </body>
-<script defer src="js/main.js"></script>
 </html>
