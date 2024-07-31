@@ -56,13 +56,16 @@ const form = document.getElementById("user-form");
 form.onsubmit = (e) => {
   e.preventDefault();
   const form = e.target;
-  console.log("form")
-  console.log(form)
   const formData = new FormData(form);
 
   // 폼 데이터를 콘솔에 출력
   formData.forEach((value, key) => {
       console.log(`${key}: ${value}`);
   });
-  
 }
+// action-type: 지출
+// date: 2024-08-09
+// asset-type: 토스뱅크
+// classification: 급여
+// price: 2800000
+// content: 수입
