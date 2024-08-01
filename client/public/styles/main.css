@@ -43,7 +43,7 @@
 
 .table__wrapper table th, td {
   display: flex;
-  width: 17%;
+  width: 20%;
   align-items: center;
   justify-content: center;
 }

@@ -1,8 +1,12 @@
-import { getIncomeInfom, postUserData } from "./api.js";
+import { getIncomeInfo, postUserData } from "./api.js";
 
 // 받은 데이터를 전역에서 다룹니다
-const { data } = await getIncomeInfo();
+const select = document.querySelector(".toggle_form select");
+const [initYear, initMonth] = select.value.split(".");
+const { data } = await getIncomeInfo(initYear, initMonth);
 
+console.log("data")
+console.log(data)
 // 초기 income data를 받아옵니다
 try {
   if (!data) {
@@ -11,14 +15,33 @@ try {
   
   const tbody = document.querySelector("#income-tbody")
   for (let item of data) {
-    // const {date, assetType, classification, content, price, incomeType} = item;
+    const {date, asset_type, classification, content, price} = item;
+    const year = new Date(date).getFullYear();
+    const month = new Date(date).getMonth();
+    
     const tr = document.createElement("tr");
-    const values = Object.values(item);
-    for (const child of values) {
-      const td = document.createElement("td");
-      td.append(child);
-      tr.append(td);
-    }
+    const dateTd = document.createElement("td");
+    const assetTypeTd = document.createElement("td");
+    const classificationTd = document.createElement("td");
+    const contentTd = document.createElement("td");
+    const priceTd = document.createElement("td");
+    
+    dateTd.append(`${year}.${month}`);
+    assetTypeTd.append(asset_type);
+    classificationTd.append(classification);
+    contentTd.append(content);
+    priceTd.append(price);
+
+    tr.append(dateTd);
+    tr.append(assetTypeTd);
+    tr.append(classificationTd);
+    tr.append(contentTd);
+    tr.append(priceTd);
+    // for (const child of values) {
+    //   const td = document.createElement("td");
+    //   td.append(child);
+    //   tr.append(td);
+    // }
     tbody.appendChild(tr);
   }
 } catch (e) {
@@ -33,15 +56,14 @@ let totalIncome = 0;
 let income = 0;
 let payment = 0;
 for (const item of data) {
-  const {price, incomeType} = item;
+  const {price} = item;
+  let num = parseInt(price)
 
-  if (incomeType === "지출") {
-    let num = parseInt(price)
-    totalIncome -= num;
-    payment += num;
+  if (num < 0) {
+    totalIncome += num;
+    payment += Math.abs(num);
   }
-  if (incomeType === "수입") {
-    let num = parseInt(price)
+  if (num > 0) {
     totalIncome+= num;
     income += num;
   }
@@ -56,18 +78,24 @@ const form = document.getElementById("user-form");
 form.onsubmit = (e) => {
   e.preventDefault();
   const form = e.target;
-  console.log(form);
   const formData = new FormData(form);
   let price = formData.get("action-type") === "지출" ? parseInt(formData.get("price")) * -1 : parseInt(formData.get("price"))
   formData.set("price", price)
   formData.delete("action-type");
   // 데이터 post
-  postUserData();
-  // 폼 데이터를 콘솔에 출력
+  const data = {
+    cashflow: {
+
+    }
+  };
   formData.forEach((value, key) => {
     console.log(`${key}: ${value}`);
+    data.cashflow[key] = value;
 });
-  
+
+
+  postUserData(data);
+  // 폼 데이터를 콘솔에 출력  
 }
 // action-type: 지출
 // date: 2024-08-09
@@ -92,12 +120,6 @@ paymentLabel.onclick = (e) => {
 }
 
 // toggle left click part
-const select = document.querySelector(".toggle_form select")
-console.log("select")
-console.log(select.value)
-console.log(select.options)
-console.log(select.options.length)
-console.log(select.selectedIndex)
 const leftBtn = document.querySelector('.toggle_form input[value="⬅"]')
 console.log("leftBtn")
 console.log(leftBtn)
