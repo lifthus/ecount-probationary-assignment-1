@@ -1,4 +1,4 @@
-import { getIncomeInfo } from "./api.js";
+import { getIncomeInfom, postUserData } from "./api.js";
 
 // 받은 데이터를 전역에서 다룹니다
 const { data } = await getIncomeInfo();
@@ -56,12 +56,18 @@ const form = document.getElementById("user-form");
 form.onsubmit = (e) => {
   e.preventDefault();
   const form = e.target;
+  console.log(form);
   const formData = new FormData(form);
-
+  let price = formData.get("action-type") === "지출" ? parseInt(formData.get("price")) * -1 : parseInt(formData.get("price"))
+  formData.set("price", price)
+  formData.delete("action-type");
+  // 데이터 post
+  postUserData();
   // 폼 데이터를 콘솔에 출력
   formData.forEach((value, key) => {
-      console.log(`${key}: ${value}`);
-  });
+    console.log(`${key}: ${value}`);
+});
+  
 }
 // action-type: 지출
 // date: 2024-08-09

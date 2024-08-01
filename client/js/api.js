@@ -12,8 +12,24 @@ export const getIncomeInfo = async () => {
 
 
 // 수입 / 지출 데이터 post
-const postUserData = async (formData) => {
-  const data = await fetch(`${URL}/endpoints`, {method: "POST", credentials:"same-origin", data: formData})
-  // 추후 구현..
-  
+export const postUserData = async (formData) => {
+  try {
+    const response = await fetch(`${URL}/cashflow`,
+      {
+        
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials:"same-origin",
+        body: formData
+      }
+    );
+    if (!response.ok) {
+      throw new Error("수입/ 지출을 입력하는데 문제가 발생했습니다");
+    }
+  } catch (e) {
+    console.log(e);
+    alert(e.message);
+  }
 }
