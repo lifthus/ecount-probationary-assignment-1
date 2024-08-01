@@ -14,10 +14,18 @@
         <form class="toggle_form">
           <input type="button" value="⬅">
             <select name="" id="">
-              <option value="">2024.07</option>
-              <option value="">2024.08</option>
-              <option value="">2024.09</option>
-              <option value="">2024.10</option>
+              <option value="2024.01">2024.01</option>
+              <option value="2024.02">2024.02</option>
+              <option value="2024.03">2024.03</option>
+              <option value="2024.04">2024.04</option>
+              <option value="2024.05">2024.05</option>
+              <option value="2024.06">2024.06</option>
+              <option value="2024.07">2024.07</option>
+              <option value="2024.08">2024.08</option>
+              <option value="2024.09">2024.09</option>
+              <option value="2024.10">2024.10</option>
+              <option value="2024.11">2024.11</option>
+              <option value="2024.12">2024.12</option>
             </select>
           <input type="button" value="➡">
         </form>
@@ -37,7 +45,7 @@
             <span id="payment-price">0</span>
           </div>
         </div>
-        <table>
+        <table class="account-book-table">
           <tbody id="income-tbody">
             <tr>
               <th>날짜</th>
@@ -54,11 +62,11 @@
     <div class="grid__item content__form__wrapper">
       <form action="" id="user-form" class="form__wrapper">
         <div class="type__wrapper">
-          <label for="method-1" class="type-label">
+          <label for="method-1" class="type-label" id="income-label">
             <input id="method-1" type="radio" name="action-type" value="수익">
             <span>수입</span>
           </label>
-          <label for="method-2" class="type-label">
+          <label for="method-2" class="type-label" id="payment-label">
             <input id="method-2" type="radio" name="action-type" value="지출">
             <span>지출</span>
           </label>

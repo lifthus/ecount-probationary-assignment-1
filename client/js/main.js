@@ -69,3 +69,51 @@ form.onsubmit = (e) => {
 // classification: 급여
 // price: 2800000
 // content: 수입
+
+// 수입 & 지출 toggle part
+
+const incomeLabel = document.getElementById("income-label");
+const paymentLabel = document.getElementById("payment-label");
+
+incomeLabel.onclick = (e) => {
+  console.log("income label click")
+  console.log(e.target);
+}
+
+paymentLabel.onclick = (e) => {
+  console.log("payment label click")
+  console.log(e.target);
+}
+
+// toggle left click part
+const select = document.querySelector(".toggle_form select")
+console.log("select")
+console.log(select.value)
+console.log(select.options)
+console.log(select.options.length)
+console.log(select.selectedIndex)
+const leftBtn = document.querySelector('.toggle_form input[value="⬅"]')
+console.log("leftBtn")
+console.log(leftBtn)
+const handleLeftClick = () => {
+  console.log("click")
+  if (select.selectedIndex === 0) {
+    return;
+  }
+  select.selectedIndex -= 1;
+  return;
+}
+leftBtn.addEventListener("click", handleLeftClick);
+
+// toggle right click part
+
+const rigthBtn = document.querySelector('.toggle_form input[value="➡"]')
+const handleRigthClick = () => {
+  console.log("click")
+  if (select.selectedIndex === select.options.length - 1) {
+    return;
+  }
+  select.selectedIndex += 1;
+  return;
+}
+rigthBtn.addEventListener("click", handleRigthClick);
