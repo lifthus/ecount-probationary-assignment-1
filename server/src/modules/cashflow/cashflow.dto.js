@@ -25,7 +25,7 @@ export class CreateCashflowRequestDTO {
     static from(request) {
         const dto = new CreateCashflowRequestDTO();
         dto.date = new Date(request.date);
-        dto.assetType = request.assetType;
+        dto.assetType = request.asset_type;
         dto.classification = request.classification;
         dto.content = request.content;
         dto.price = request.price;
