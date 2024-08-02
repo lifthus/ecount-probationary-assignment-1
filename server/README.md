@@ -8,7 +8,7 @@ POST /cashflow
 {
   "cashflow" :  {
          "date":"2024.07.19",
-         "assetsType":"카카오뱅크",
+         "asset_type":"카카오뱅크",
          "classification":"외식",
          "content":"식비",
          "price":"50000",
@@ -27,7 +27,7 @@ GET /cashflow?year=2024&month=1
    "data":[
       {
          "date":"2024-01-19",
-         "assetsType":"카카오뱅크",
+         "asset_type":"카카오뱅크",
          "classification":"외식",
          "content":"식비",
          "price":"50000",
@@ -35,7 +35,7 @@ GET /cashflow?year=2024&month=1
       },
       {
          "date":"2024-01-19",
-         "assetsType":"토스",
+         "asset_type":"토스",
          "classification":"급여",
          "content":"월급",
          "price":"2400000",

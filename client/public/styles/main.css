@@ -1,0 +1,165 @@
+:root {
+  --bg-color: white;
+  --text-color: black;
+}
+
+
+.main__wrapper {
+  width: 100vw;
+  height: 100vh;
+  padding: 10vh 10vw;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  background-color: var(--bg-color);
+  box-sizing: border-box;
+}
+
+/* main data content part */
+
+.content__wrapper {
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+}
+
+.table__wrapper {
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+}
+
+.table__wrapper table {
+  overflow-y: scroll;
+}
+.table__wrapper table tr {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid;
+  border-color: var(--text-color);  
+}
+
+.table__wrapper table tr:first-child {
+  background-color: rgba(133, 120, 120, .2);
+}
+
+.table__wrapper table th, td {
+  display: flex;
+  width: 20%;
+  align-items: center;
+  justify-content: center;
+}
+
+.table__wrapper table th {
+  font-weight: 600;
+}
+
+/* 수입 / 지출 통계 part */
+.summary_warpper {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  background-color: aliceblue;
+}
+
+.summary_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.summary_item span:first-child {
+  font-weight: 600;
+  margin-bottom: .5rem;
+}
+
+#income-price {
+  color: #00C851;
+}
+
+#payment-price {
+  color: #ff4444;
+}
+
+#income-price::after, #payment-price::after {
+  content: "원";
+  margin-left: .2rem;
+}
+
+
+/* toggle wrapper */
+.toggle__wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.toggle_form {
+  display: flex;
+  width: 300px;
+}
+.toggle_form input[type="button"] {
+  background-color: transparent;
+  border: 1px solid black;
+  padding: .3rem 1rem;
+}
+.toggle_form input[type="button"]:first-child {
+  border-right: none;
+}
+.toggle_form input[type="button"]:last-child {
+  border-left: none;
+}
+.toggle_form input[type="button"]:hover {
+  cursor: pointer;
+}
+
+.toggle_form select {
+  width: 8rem;
+  text-align: center;
+}
+/* form part */
+
+.user-input {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 10px 0;
+  flex-direction: column;
+}
+.user-input:last-child {
+  margin-bottom: 20px;
+}
+
+.form__wrapper {
+  display: flex;
+  padding: 2rem;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.form__wrapper input[type="text"], .form__wrapper input[type="number"], .form__wrapper input[type="date"] {
+  padding: .2rem 0;
+} 
+
+.form__wrapper input[type="submit"] {
+  margin-top: 10px;
+  width: 50%;
+  padding: .5rem 0;
+  border: none;
+  background-color: #00C851;
+  color: white;
+  border-radius: 5px;
+}
+
+.form__wrapper input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+.type__wrapper {
+}
+
+.label-description {
+  margin-bottom: .5rem;
+}
